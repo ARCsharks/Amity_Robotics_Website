@@ -238,25 +238,45 @@ button {
 .sponsors-grid {
   display: grid;
   gap: 40px;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   justify-items: stretch;
 }
 
 .sponsors-grid.megalodon {
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1200px));
+  grid-template-columns: repeat(1, 1fr);
+  h3 {
+    font-size: 50px;
+  }
+  p {
+    font-size: 17px;
+  }
 }
 
 .sponsors-grid.greatwhite {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+  grid-template-columns: repeat(2, 1fr);
+  h3 {
+    font-size: 50px;
+  }
+  p {
+    font-size: 17px;
+  }
 }
 
 .sponsors-grid.tiger {
-  grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+  grid-template-columns: repeat(4, 1fr);
+  h3 {
+    font-size: 35px;
+    line-height: 110%;
+  }
 }
 
 .sponsors-grid.hammerhead {
-  grid-template-columns: repeat(auto-fit, minmax(120px, 160px));
+  grid-template-columns: repeat(5, 1fr);
+  h3 {
+    font-size: 25px;
+    line-height: 110%;
+  }
 }
 
 /* CARD */

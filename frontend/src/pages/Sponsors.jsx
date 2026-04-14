@@ -26,12 +26,25 @@ export default function Sponsors() {
     {
       key: "greatwhite",
       title: "GREAT WHITE SPONSORS",
-      fields: ["logo", "name", "website"],
+      fields: ["logo", "name", "description", "website", "socials"],
       sponsors: [
         {
           name: "Company B",
           logo: placeHolder,
+          description: "Supporting the next generation of engineers.",
           website: "https://example.com",
+          socials: {
+            facebook: "https://www.facebook.com/companyB"
+          }
+        },
+        {
+          name: "Company C",
+          logo: placeHolder,
+          description: "Supporting another generation of engineers.",
+          website: "https://example.com",
+          socials: {
+            linkedin: "https://www.facebook.com/companyC"
+          }
         },
       ],
     },
@@ -39,13 +52,31 @@ export default function Sponsors() {
       key: "tiger",
       title: "TIGER SHARK SPONSORS",
       fields: ["logo", "name", "website"],
-      sponsors: [],
+      sponsors: [
+        {
+          name: "Company Alpha",
+          logo: placeHolder,
+          website: "https://www.the-alpha.net"
+        },
+        {
+          name: "Company Beta",
+          logo: placeHolder,
+          website: "https://www.the-beta.net"
+        }
+
+      ],
     },
     {
       key: "hammerhead",
       title: "HAMMERHEAD SPONSORS",
       fields: ["logo", "name", "website"],
-      sponsors: [],
+      sponsors: [
+        {
+          name: "Company Charlie",
+          logo: placeHolder,
+          website: "https://www.the-charlie.net"
+        }
+      ],
     },
   ];
 
@@ -99,7 +130,7 @@ export default function Sponsors() {
                     <img
                       src={sponsor.logo}
                       alt={sponsor.name}
-                      className="h-[48px] w-[48px] object-contain"
+                      className="logo h-[48px] w-[48px] object-contain"
                     />
                     <h3 className="font-semibold text-[40px] text-black">
                       {sponsor.name}
@@ -121,11 +152,13 @@ export default function Sponsors() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
+
                           <img
                             src={socialLogoProvider(type)}
                             alt={`${sponsor.name}'s ${type}`}
                             className="h-[20px] w-[20px] border-1 border-black bg-red-50"
                           />
+
                         </a>
                       ))}
                     </div>
