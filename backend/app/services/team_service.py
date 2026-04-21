@@ -10,3 +10,12 @@ def create_team(db: Session, team_data):
 
 def get_teams(db: Session):
     return db.query(Team).all()
+
+def del_team(db: Session, team_id: int):
+    team = db.query(Team).filter(Team.id == team_id).first()
+
+    if team:
+        db.delete(team)
+        db.commit()
+
+    return team

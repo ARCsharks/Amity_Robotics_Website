@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.database.database import Base, engine
-from app.api.routes import robots, users, teams
+from app.api.routes import robots, users, teams, sponsors
 from fastapi.middleware.cors import CORSMiddleware
 
 Base.metadata.create_all(bind=engine)
@@ -27,4 +27,4 @@ app.add_middleware(
 app.include_router(robots.router, prefix="/robots", tags=["Robots"])
 app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(teams.router, prefix="/teams", tags=["Teams"])
-
+app.include_router(sponsors.router, prefix="/sponsors", tags=["Sponsors"])

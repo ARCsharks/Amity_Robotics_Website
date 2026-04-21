@@ -10,3 +10,13 @@ def create_robot(db: Session, robot_data):
 
 def get_robots(db: Session):
     return db.query(Robot).all()
+
+def del_robot(db: Session, robot_id: int):
+    robot = db.query(Robot).filter(Robot.id == robot_id).first()
+
+    if robot:
+        db.delete(robot)
+        db.commit()
+
+    return robot
+
