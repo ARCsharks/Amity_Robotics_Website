@@ -20,7 +20,7 @@
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
-  color: var(--text);
+  /*color: var(--text); */
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -34,7 +34,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
+    --text: #9ca3af; 
     --text-h: #f3f4f6;
     --bg: #16171d;
     --border: #2e303a;
@@ -53,8 +53,8 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #202749, #7c5252);
-  color: white;
+  background: radial-gradient(circle at top, #4380d2, #8e66baeb);
+  color: rgba(0, 0, 0, 0.803);
   margin: 0;
   padding: 0;
 }
@@ -76,7 +76,7 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
+  /*color: var(--text-h); */
 }
 
 h1 {
@@ -108,7 +108,7 @@ code,
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
-  color: var(--text-h);
+  /*color: var(--text-h); */
 }
 
 code {
@@ -287,8 +287,27 @@ button {
   background: #f1f5f9;
   transition: all 0.25s ease;
   text-align: left;
+  border: 3px;
+  position: relative;
+  overflow: hidden;
 }
 
+.sponsor-card::before {
+  content: "";
+  position: absolute;
+  inset: -6px;              /* pushes glow outside */
+  border-radius: 26px;
+  .megladon {
+    border-color: #06b6d4;
+    background: linear-gradient(
+      135deg,
+      #06b6d4,
+      #3b82f6,
+      #8b5cf6
+    );
+    filter: blur(14px); 
+  }
+}
 /* HOVER */
 .sponsor-card:hover {
   background: #e2e8f0;
