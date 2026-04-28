@@ -33,8 +33,8 @@ def return_sponsor_data(db: Session = Depends(get_db)):
 
 @router.delete("/sponsor/{sponsor_id}", response_model=SponsorResponse)
 def delete_spons(sponsor_id: int, db: Session = Depends(get_db)):
-    del_sponsor(db, sponsor_id)
+    return del_sponsor(db, sponsor_id)
 
 @router.delete("/tier/{tier_id}", response_model=SponsorTierResponse)
 def delete_tier(tier_id: int, db: Session = Depends(get_db)):
-    del_sponsor_tier(db, tier_id)
+    return del_sponsor_tier(db, tier_id)

@@ -54,7 +54,7 @@ export default function Navbar() {
             <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/">Home</Link>
             <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/robots">Robots</Link>
             <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/team">Team</Link>
-            <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/Sponsors">Sponsors</Link>
+            <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/sponsors">Sponsors</Link>
             <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/news">News</Link>
             <Link className="hover:text-cyan-400 glow-hover whitespace-nowrap" to="/contact-us">Contact Us</Link>
           </div>

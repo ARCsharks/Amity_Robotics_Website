@@ -19,7 +19,7 @@ export default function Home() {
         </motion.h1>
 
         <p className="mt-6 text-gray-400 max-w-xl">
-          We design, build, and compete with advanced robotics systems.
+          We're broke. We need money 😭
         </p>
 
       </div>

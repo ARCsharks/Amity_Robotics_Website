@@ -17,4 +17,4 @@ def read(db: Session = Depends(get_db)):
 
 @router.delete("/{team_id}", response_model=TeamResponse)
 def delete(team_id: int, db: Session = Depends(get_db)):
-    del_team(db, team_id)
+    return del_team(db, team_id)
