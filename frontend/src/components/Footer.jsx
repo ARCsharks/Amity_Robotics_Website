@@ -31,8 +31,9 @@ export default function Footer() {
           </p>
 
           <div className="flex gap-[20px]">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1" target="_blank" className="hover:text-cyan-400">Youtube</a>
-            <a href="#" className="hover:text-cyan-400">Instagram</a>
+            <a href="https://www.youtube.com/@ARCSharksRobotics" target="_blank" className="hover:text-cyan-400">Youtube</a>
+            <a href="https://www.tiktok.com/@arcsharksrobotics" target="_blank" className="hover:text-cyan-400">TikTok</a>
+            <a href="https://www.instagram.com/arcsharksrobotics/" target="_blank" className="hover:text-cyan-400">Instagram</a>
           </div>
 
         </div>
