@@ -1,11 +1,13 @@
 from fastapi import FastAPI
+app = FastAPI()
+
 from app.database.database import Base, engine
 from app.api.routes import robots, users, teams, sponsors
 from fastapi.middleware.cors import CORSMiddleware
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+
 
 @app.post("/")
 def root():

@@ -39,11 +39,11 @@ export default function Robots() {
       <PageHeader title="OUR ROBOTS" />
 
       {loading ? (
-        <p className="text-center text-cyan-300 mt-10">
+        <p className="text-center text-cyan-300 mt-10 ">
           Loading robots...
         </p>
       ) : robots.length === 0 ? (
-        <p className="text-center text-gray-400 mt-10">
+        <p className="text-center text-gray-400 mt-10 ">
           No robots found.
         </p>
       ) : (

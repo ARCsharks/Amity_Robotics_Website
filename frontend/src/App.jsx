@@ -8,8 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <ScrollToTop />
-      <AppRoutes />
+      <main className="min-h-screen flex flex-col">
+        <ScrollToTop />
+        <AppRoutes />
+      </main>
       <Footer />
     </BrowserRouter>
   );

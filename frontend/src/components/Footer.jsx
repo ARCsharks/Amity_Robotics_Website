@@ -3,7 +3,7 @@ import logo from "../assets/arcSharksLogo.png"
 
 export default function Footer() {
   return (
-    <footer className="footer mt-[120px] border-t border-cyan-500">
+    <footer className="footer mt-15 min-h-[200px] border-t border-cyan-500">
 
       <div className="max-w-[1200px] mx-auto px-[24px] py-[50px]">
 

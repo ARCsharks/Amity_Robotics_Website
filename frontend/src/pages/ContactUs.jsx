@@ -73,12 +73,12 @@ export default function ContactUs() {
   }; 
 
   return (
-    <div className="contact-page min-h-screen flex flex-col items-center justify-center gap-[20px]">
+    <div className="contact-page min-h-screen flex flex-col items-center justify-center gap-[20px] ">
       <PageHeader title="Contact Us" />
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-[500px] border border-cyan-500 rounded-[16px] p-[20px] flex flex-col gap-[16px] backdrop-blur-lg"
+        className="w-full max-w-[500px] border border-cyan-500 rounded-[16px] p-[20px] flex flex-col gap-[16px] backdrop-blur-lg mb-30"
       >
         {/* Name */}
         <div className="flex flex-col gap-[4px]">

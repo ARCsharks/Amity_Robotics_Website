@@ -68,6 +68,7 @@ export default function BecomeASponsor() {
             text-white
             shadow-lg
             hover:shadow-xl
+            mb-7
           "
         >
           Contact Form
