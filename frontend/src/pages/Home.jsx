@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import PageHeader from "../components/PageHeader";
-import media from "../assets/media.jpg";
+import media from "../assets/media.JPG";
 import Slideshow from "../components/Slideshow";
 
 const images = import.meta.glob("../assets/ClubSlideshow/*.{JPG,png}", {
