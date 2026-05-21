@@ -100,6 +100,8 @@ def get_service():
     if os.path.exists("token.json"):
         creds = Credentials.from_authorized_user_file("token.json", SCOPES)
 
+    print(creds)
+
     # If not valid then back to login :)
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:

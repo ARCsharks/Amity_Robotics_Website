@@ -24,7 +24,7 @@ def verify_code(data: VerifyRequest, db: Session = Depends(get_db)):
 
 @router.post("/create-ticket")
 def create_ticket(ticketInfo: CreateEmailTicket):
-    supportEmail = "acs26967@amitystudent.com"
+    supportEmail = "acs26967@amitystudent.com, jsaleh2030@amitystudent.com"
 
     emails = [ticketInfo.email, supportEmail]
 
