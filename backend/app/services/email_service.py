@@ -23,6 +23,15 @@ import time
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 
+def cred_setup():
+   if not os.path.exists("token.json"):
+    with open("token.json", "w") as f:
+        f.write(os.environ["GOOGLE_TOKEN_JSON"])
+
+    if not os.path.exists("credentials.json"):
+        with open("credentials.json", "w") as f:
+            f.write(os.environ["GOOGLE_CREDENTIALS_JSON"]) 
+
 def hash_code(code: str, salt: str) -> str:
     return hashlib.sha256((code + salt).encode()).hexdigest()
 
@@ -107,10 +116,7 @@ def get_service():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                "credentials.json", SCOPES
-            )
-            creds = flow.run_local_server(port=0)
+            raise Exception("OAuth reauthentication required")
 
         # Save token
         with open("token.json", "w") as token:

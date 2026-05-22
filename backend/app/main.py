@@ -1,12 +1,24 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 from app.database.database import Base, engine
 from app.api.routes import robots, users, teams, sponsors
-from fastapi.middleware.cors import CORSMiddleware
+from app.core.limiter import limiter, SlowAPIMiddleware, RateLimitExceeded, _rate_limit_exceeded_handler
+from app.services.email_service import cred_setup
+
+cred_setup()
 
 Base.metadata.create_all(bind=engine)
 
+app.state.limiter = limiter
+
+app.add_exception_handler(
+    RateLimitExceeded,
+    _rate_limit_exceeded_handler
+)
+
+app.add_middleware(SlowAPIMiddleware)
 
 
 @app.post("/")
@@ -14,13 +26,14 @@ def root():
     return {"status": "The API is running."}
 
 origins = [
-    "https://vd1fgc8j-5173.aue.devtunnels.ms/",
-    "http://"
+    "https://www.arcsharks.com.au",
+    "http://localhost:5173"
+    
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"], 
     allow_headers=["*"],  
