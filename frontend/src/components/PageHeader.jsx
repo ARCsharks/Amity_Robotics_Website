@@ -8,7 +8,7 @@ export default function PageHeader({ title, image_path }) {
           : {}
       }
     >
-      <h1 className="heading-space text-cyan-300 font-bold text-[64px] text-center">
+      <h1 className="heading-space text-[#E6FBFF] drop-shadow-[0_0_18px_#00D9FF] font-bold text-[64px] text-center font-orbitron">
         {title}
       </h1>
     </div>

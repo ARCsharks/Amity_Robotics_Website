@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getTeams } from "../services/teamService";
 import placeHolder from "../assets/arcSharksLogo.png"
+import ScrollReveal from "../components/ScrollReveal";
 
 export default function Team() {
   const [teams, setTeams] = useState([]);
@@ -12,7 +13,6 @@ export default function Team() {
       const fetchTeams = async () => {
         try {
           const data = await getTeams();
-          console.log(data)
           setTeams(Array.isArray(data) ? data : []);
         } catch (err) {
           console.error("Failed to fetch teams:", err);
@@ -48,7 +48,7 @@ export default function Team() {
         </p>
       ) : (
         comps.map((comp) => (
-          <div key={comp} className="mt-[64px]">
+          <ScrollReveal key={comp} className="mt-[64px]">
 
             {/* COMP Title */}
             <h2 className="text-[28px] text-cyan-300 font-bold text-center mb-[32px]">
@@ -109,7 +109,7 @@ export default function Team() {
               ))}
 
             </div>
-          </div>
+          </ScrollReveal>
         ))
       )}
 

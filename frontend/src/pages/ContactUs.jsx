@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
 import { verfEmailCode, sendVerfEmail, createEmailTicket } from "../services/userService";
+import ScrollReveal from "../components/ScrollReveal";
 
 export default function ContactUs() {
   const [form, setForm] = useState({
@@ -76,10 +77,11 @@ export default function ContactUs() {
     <div className="contact-page min-h-screen flex flex-col items-center justify-center gap-[20px] ">
       <PageHeader title="Contact Us" />
 
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-[500px] border border-cyan-500 rounded-[16px] p-[20px] flex flex-col gap-[16px] backdrop-blur-lg mb-30"
-      >
+      <ScrollReveal className="w-full max-w-[500px] mb-30">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full border border-cyan-500 rounded-[16px] p-[20px] flex flex-col gap-[16px] backdrop-blur-lg"
+        >
         {/* Name */}
         <div className="flex flex-col gap-[4px]">
           <label className="text-[12px] text-cyan-400">Name</label>
@@ -166,7 +168,8 @@ export default function ContactUs() {
             </button>
           </div>
         )}
-      </form>
+        </form>
+      </ScrollReveal>
     </div>
   );
 }

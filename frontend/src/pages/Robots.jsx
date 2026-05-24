@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader";
 import { motion } from "framer-motion";
 import { getRobots } from "../services/robotService";
 import placeHolder from "../assets/arcSharksLogo.png"
+import ScrollReveal from "../components/ScrollReveal";
 
 export default function Robots() {
   const [robots, setRobots] = useState([]);
@@ -12,7 +13,6 @@ export default function Robots() {
     const fetchRobots = async () => {
       try {
         const data = await getRobots();
-        console.log(data)
         setRobots(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Failed to fetch robots:", err);
@@ -48,7 +48,7 @@ export default function Robots() {
         </p>
       ) : (
         years.map((year) => (
-          <div key={year} className="mt-[64px]">
+          <ScrollReveal key={year} className="mt-[64px]">
 
             {/* Year Title */}
             <h2 className="text-[28px] text-cyan-300 font-bold text-center mb-[32px]">
@@ -109,7 +109,7 @@ export default function Robots() {
               ))}
 
             </div>
-          </div>
+          </ScrollReveal>
         ))
       )}
     </div>

@@ -11,6 +11,10 @@ export default {
       borderRadius: {
         xl: "1rem",
       },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"]
+      }
     },
   },
   plugins: [],
