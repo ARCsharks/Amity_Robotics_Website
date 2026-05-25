@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:2469",
+  baseURL: "https://data.arcsharks.com.au",
 });
 
 export default api;

@@ -3,6 +3,7 @@ import placeHolder from "../assets/arcSharksLogo.png"
 import xLogo from "../assets/xLogo.png"
 import linkedinLogo from "../assets/linkedinLogo.png"
 import facebookLogo from "../assets/facebookLogo.png"
+import youtubeLogo from "../assets/youtubeLogo.png"
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getSponsorData } from "../services/sponsorService";
@@ -41,18 +42,13 @@ export default function Sponsors() {
       return facebookLogo;
     } else if (type === "linkedin") {
       return linkedinLogo
+    } else if(type === "youtube") {
+      return youtubeLogo
     } else {
       console.error(`Unknown social media account: ${type}`)
       return placeHolder
     }
 
-  };
-
-  const socialLabelProvider = (type) => {
-    if (type === "x") return "X";
-    if (type === "facebook") return "Facebook";
-    if (type === "linkedin") return "LinkedIn";
-    return type;
   };
 
   const getSponsorSocials = (socials) => {
@@ -136,8 +132,8 @@ export default function Sponsors() {
                             href={social.socialLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`${sponsor.name} on ${socialLabelProvider(social.socialType)}`}
-                            title={socialLabelProvider(social.socialType)}
+                            aria-label={`${sponsor.name} on ${socialLogoProvider(social.socialType)}`}
+                            title={socialLogoProvider(social.socialType)}
                             className="group inline-flex h-[40px] w-[40px] items-center justify-center rounded-[8px] border border-slate-900/15 bg-white shadow-[0_6px_16px_rgba(15,23,42,0.12)] transition hover:-translate-y-[1px] hover:border-cyan-500 hover:bg-cyan-50 hover:shadow-[0_12px_24px_rgba(8,145,178,0.18)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500"
                           >
                             <img
