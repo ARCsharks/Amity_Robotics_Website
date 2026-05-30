@@ -20,17 +20,22 @@ import os
 import hashlib
 import secrets
 import time
+from app.core import config
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
+TOKEN_PATH = os.path.join(config.GOOGLE_AUTH_DIR, "token.json")
+CREDENTIALS_PATH = os.path.join(config.GOOGLE_AUTH_DIR, "credentials.json")
 
 def cred_setup():
-   if not os.path.exists("token.json"):
-    with open("token.json", "w") as f:
-        f.write(os.environ["GOOGLE_TOKEN_JSON"])
+    os.makedirs(config.GOOGLE_AUTH_DIR, exist_ok=True)
 
-    if not os.path.exists("credentials.json"):
-        with open("credentials.json", "w") as f:
-            f.write(os.environ["GOOGLE_CREDENTIALS_JSON"]) 
+    if not os.path.exists(TOKEN_PATH) and os.getenv("GOOGLE_TOKEN_JSON"):
+        with open(TOKEN_PATH, "w") as f:
+            f.write(os.environ["GOOGLE_TOKEN_JSON"])
+
+    if not os.path.exists(CREDENTIALS_PATH) and os.getenv("GOOGLE_CREDENTIALS_JSON"):
+        with open(CREDENTIALS_PATH, "w") as f:
+            f.write(os.environ["GOOGLE_CREDENTIALS_JSON"])
 
 def hash_code(code: str, salt: str) -> str:
     return hashlib.sha256((code + salt).encode()).hexdigest()
@@ -106,8 +111,8 @@ def get_service():
     creds = None
 
     # Load saved token
-    if os.path.exists("token.json"):
-        creds = Credentials.from_authorized_user_file("token.json", SCOPES)
+    if os.path.exists(TOKEN_PATH):
+        creds = Credentials.from_authorized_user_file(TOKEN_PATH, SCOPES)
 
     print(creds)
 
@@ -119,7 +124,7 @@ def get_service():
             raise Exception("OAuth reauthentication required")
 
         # Save token
-        with open("token.json", "w") as token:
+        with open(TOKEN_PATH, "w") as token:
             token.write(creds.to_json())
 
     return build("gmail", "v1", credentials=creds)

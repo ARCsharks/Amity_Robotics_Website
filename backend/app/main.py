@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.core import config
 app = FastAPI()
 
 from app.database.database import Base, engine
@@ -25,15 +26,13 @@ app.add_middleware(SlowAPIMiddleware)
 def root():
     return {"status": "The API is running."}
 
-origins = [
-    "https://www.arcsharks.com.au",
-    "http://localhost:5173"
-    
-]
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=config.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"], 
     allow_headers=["*"],  
