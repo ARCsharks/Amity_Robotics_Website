@@ -21,7 +21,7 @@ export default function Slideshow({ photo_list }) {
                   alt=""
                   className="slideshow-image"
                   loading={group === 0 && index < 2 ? "eager" : "lazy"}
-                  fetchPriority={group === 0 && index === 0 ? "high" : "auto"}
+                  fetchpriority={group === 0 && index === 0 ? "high" : "auto"}
                   decoding="async"
                 />
               </div>
