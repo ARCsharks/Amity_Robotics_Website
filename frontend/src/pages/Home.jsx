@@ -40,12 +40,12 @@ export default function Home() {
                 </h1>
 
                 <p className="mx-auto mt-6 w-full max-w-3xl break-words text-center text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl font-playfair">
-                  ARC Sharks is a robotics club based in Amity College Prestons. ARC
-                  stands for Amity Robotics Club. We are a group of passionate
-                  students, guided by teachers, who want to explore further
-                  innovation. Currently, we are registered for the FRC (First Robotics
-                  Competition) and FTC (First Tech Challenge) competitions. These
-                  competitions host multiple events that our team can attend.
+                  ARC Sharks Robotics is the official FIRST Robotics team of Amity College in Sydney,
+                   bringing together passionate students with a shared interest in
+                   science, technology, engineering, and mathematics (STEM). 
+                   Competing in the FIRST Tech Challenge (FTC) and FIRST Robotics Competition (FRC), our team 
+                   designs, builds, programs, and operates high-performance robots 
+                   while developing real-world skills that extend far beyond the classroom.
                 </p>
               </section>
             </ScrollReveal>
@@ -57,22 +57,23 @@ export default function Home() {
                 </h1>
 
                 <p className="mx-auto mt-6 w-full max-w-3xl break-words text-center text-base leading-relaxed text-gray-100 sm:text-lg md:text-xl font-playfair">
-                  ARC Sharks started in the beggining of 2024, when one of our
-                  teachers (now our mentor) wanted to start a robotics club at our
-                  school. He sent sent an announcement to everyone that there would be
-                  a session after school on a Monday. There was a bunch of interested
-                  students that turned up, but no one had any, or lot's of, experience
-                  with building robots. Our mentor tought us the basics of everything,
-                  from CAD, to programming and fundraising. Then, it was time. We built
-                  just a robot frame and entered the Duel Down Under FRC off-season
-                  competition, where we were overwhelmed by other robots. However, we
-                  learnt many different other skills, such as strategy and time
-                  management. In the end, while we where last in the qualifiers, we won
-                  the competition by winning the finals as we were chosen by Alliance
-                  1. This gave us encouragment. After that competition, our team has
-                  been growing in both numbers and skills. Now we have participated
-                  many other competitions, such as the FRC Southern-Cross Qualifiers
-                  and the FTC North-Sydney Qualifiers.
+                  ARC Sharks Robotics was founded in early 2024 when one of our teachers, now our mentor
+                  started a robotics club at amity college. A group of enthusiastic students came together,
+                  many with little to no prior experience in robotics yet eager to learn and take on the
+                  challenge.
+
+                  After learning the basics of engineering, CAD, Programming, and teamwork, we entered our
+                  First competition, the Duel Down Under FRC Off seasin event with nothing more then a 
+                  simple robot frame. We were surrounded by experienced teams and impressive robots, we
+                  learned valuable lessoons about strategy, collaboration, and perseverance. Eventually
+                  we went on to win the event as we were selected by the top ranked alliance. That 
+                  unforgettable experience ignited our passion to strive for excellence and become the best.
+
+                  Today, ARC Sharks robotics had grown not only in size but in skill and we are now looking 
+                  forward to try and compete in more competitions not only in sydney but also across australia.
+                  As we continue to grow, we remain commited to our mission; to challenge ourselves,
+                  inspire others, and make a positive impact through robotics.
+                  
                 </p>
               </section>
             </ScrollReveal>
