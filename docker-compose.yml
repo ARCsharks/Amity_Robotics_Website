@@ -8,8 +8,8 @@ services:
       DB_URL: sqlite:////data/robotics.db
       GOOGLE_AUTH_DIR: /data/google
       CORS_ORIGINS: https://arcsharks.com.au,https://www.arcsharks.com.au,http://localhost:3000,http://localhost:5173
-    expose:
-      - "8000"
+    ports:
+      - "8000:8000"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"]
@@ -27,7 +27,7 @@ services:
         VITE_API_URL: /api
     container_name: vite-frontend
     ports:
-      - "80:80"
+      - "3000:80"
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
