@@ -63,7 +63,7 @@ export default function Home() {
                   challenge.
 
                   After learning the basics of engineering, CAD, Programming, and teamwork, we entered our
-                  First competition, the Duel Down Under FRC Off seasin event with nothing more then a 
+                  First competition, the Duel Down Under FRC Off season event with nothing more then a 
                   simple robot frame. We were surrounded by experienced teams and impressive robots, we
                   learned valuable lessoons about strategy, collaboration, and perseverance. Eventually
                   we went on to win the event as we were selected by the top ranked alliance. That 
