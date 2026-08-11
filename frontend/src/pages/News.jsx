@@ -1,7 +1,27 @@
 import PageHeader from "../components/PageHeader";
 import ScrollReveal from "../components/ScrollReveal";
+import { getYoutubeVideos } from "../services/postService";
+import SocialBar from "../components/SocialBar";
+import { useEffect, useState } from "react";
 
 export default function News() {
+
+  {/*const [youtubeVidData, setYoutubeVidData] = useState(null);
+
+  useEffect(() => {
+    const fetchYoutubeVideos = async () => {
+      try {
+        const data = await getYoutubeVideos();
+        setYoutubeVidData(data);
+        console.log("Fetched youtube video data:", data);
+      } catch (err) {
+        console.error("Failed to fetch youtube videos:", err);
+      }
+    };
+
+    fetchYoutubeVideos();
+  }, []); */}
+
   return (
     <div className="">
       <PageHeader title="NEWS" />
@@ -19,6 +39,8 @@ export default function News() {
           className="items-center pt-20 mx-auto" 
         />
       </ScrollReveal>
+
+      {/*<SocialBar name="Youtube" videos={youtubeVidData} />*/}
 
     </div>
   );

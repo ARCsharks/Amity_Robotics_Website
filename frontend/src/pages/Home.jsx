@@ -4,7 +4,7 @@ import media from "../assets/media.JPG";
 import Slideshow from "../components/Slideshow";
 import ScrollReveal from "../components/ScrollReveal";
 
-const imageModules = import.meta.glob("../assets/ClubSlideshow/*.{JPG,png}", {
+const imageModules = import.meta.glob("../assets/MRTRobotSlideshow/*.{JPG,png,jpeg}", {
   import: "default",
 });
 
@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div>
-      <PageHeader title="ARC Sharks" image_path={media} />
+      <PageHeader title="ARC Sharks" image_path={media} takeFullHeight={true}/>
       <main className="relative z-10 flex min-h-screen w-full flex-col items-center overflow-x-hidden px-4 pb-24 text-center">
         <div className="absolute h-72 w-72 rounded-full bg-cyan-500 opacity-20 blur-3xl" />
 

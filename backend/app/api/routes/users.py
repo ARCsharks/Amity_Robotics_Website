@@ -24,24 +24,28 @@ def verify_code(data: VerifyRequest, db: Session = Depends(get_db)):
 
 @router.post("/create-ticket")
 def create_ticket(ticketInfo: CreateEmailTicket):
-    supportEmail = "acs26967@amitystudent.com, jsaleh2030@amitystudent.com"
 
-    emails = [ticketInfo.email, supportEmail]
+    emails = [ 
+                {"name": ticketInfo.name, "email": ticketInfo.email},
+                {"name": "Joud Saleh", "email": "jsaleh2030@amitystudent.com"},
+                {"name": "Yahya Khan", "email": "acs26967@amitystudent.com"}
+            ]
 
     subject = f"ARC Sharks Ticket: {ticketInfo.name} | {ticketInfo.subject}"
 
     body = f"""
-{ticketInfo.name} sent a message:
+<html>
+    <body>
+        <p> {ticketInfo.name} sent a message: <br> </P>
+        <p> {ticketInfo.message} <br> </P>
+        <p> Email: {ticketInfo.email} </p>
+    </body>
+</html>
 
-{ticketInfo.message}
-
-Email: {ticketInfo.email}
 """
 
-    email_service.send_email(
-        emails=emails,
-        subject=subject,
-        body=body
-    )
+    email_service.send_email(subject, body, "ARC Sharks", "ticket-creator@arcsharks.com.au", emails)
+        
+    
 
     return {"success": "true"}

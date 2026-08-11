@@ -4,11 +4,8 @@ from app.core import config
 app = FastAPI()
 
 from app.database.database import Base, engine
-from app.api.routes import robots, users, teams, sponsors
+from app.api.routes import robots, users, teams, sponsors, posts
 from app.core.limiter import limiter, SlowAPIMiddleware, RateLimitExceeded, _rate_limit_exceeded_handler
-from app.services.email_service import cred_setup
-
-cred_setup()
 
 Base.metadata.create_all(bind=engine)
 
@@ -42,3 +39,4 @@ app.include_router(robots.router, prefix="/robots", tags=["Robots"])
 app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(teams.router, prefix="/teams", tags=["Teams"])
 app.include_router(sponsors.router, prefix="/sponsors", tags=["Sponsors"])
+app.include_router(posts.router, prefix="/posts", tags=["Posts"])

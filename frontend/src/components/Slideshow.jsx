@@ -1,4 +1,4 @@
-export default function Slideshow({ photo_list }) {
+export default function Slideshow({ photo_list, scroll }) {
   const images = photo_list || [];
 
   if (!images.length) {

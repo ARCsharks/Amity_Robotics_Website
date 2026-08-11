@@ -31,6 +31,8 @@ export default function ContactUs() {
       await sendVerfEmail(form.email, form.name);
 
       setShowCodeInput(true);
+
+      alert("A verification code has been sent to your email. Please know that it can sometimes take up to 10mins to send.");
     } catch (err) {
       console.error(err);
       setShowCodeInput(false);
@@ -51,8 +53,6 @@ export default function ContactUs() {
         setCode("");
 
         await createEmailTicket(form.email, form.name, form.subject, form.message)
-        
-        alert("Ticket created. Check your inbox.");
 
         setForm({
           name: "",

@@ -5,10 +5,6 @@ from PIL import Image, ImageOps
 ### YO JOUD, DONT USE A PHOTO UNLESS ITS JPEG, JPG OR PNG ###
 
 def encode_image(image_bytes: bytes) -> str:
-    """
-    Convert raw image bytes → base64 data URL
-    (auto-detects image type: jpeg, png, etc.)
-    """
     try:
         image = Image.open(io.BytesIO(image_bytes))
         image_format = image.format.lower()  # reminder to self AND JOUD!! jpeg or png only
@@ -23,9 +19,6 @@ def encode_image(image_bytes: bytes) -> str:
 
 
 def compress_image(image_bytes: bytes, quality: int = 70) -> bytes:
-    """
-    Compress image to reduce size (good for base64 performance)
-    """
     try:
         image = Image.open(io.BytesIO(image_bytes))
 
@@ -45,10 +38,6 @@ def compress_image(image_bytes: bytes, quality: int = 70) -> bytes:
         return image_bytes
 
 def process_image(image_bytes: bytes) -> str:
-    """
-    Full pipeline:
-    compress → encode → return base64 string
-    """
     compressed = compress_image(image_bytes)
     return encode_image(compressed)
     

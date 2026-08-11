@@ -1,41 +1,21 @@
-import os.path
-import base64
-from email.mime.text import MIMEText
-
-try:
-    from google.auth.transport.requests import Request
-    from google.oauth2.credentials import Credentials
-    from google_auth_oauthlib.flow import InstalledAppFlow
-    from googleapiclient.discovery import build
-except ImportError:
-    Request = None
-    Credentials = None
-    InstalledAppFlow = None
-    build = None
-
 from app.database.models.user import VerificationCode
 from sqlalchemy.orm import Session
-
-import os
 import hashlib
 import secrets
 import time
-from app.core import config
+import os
+import app.core.config as config
 
-SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
-TOKEN_PATH = os.path.join(config.GOOGLE_AUTH_DIR, "token.json")
-CREDENTIALS_PATH = os.path.join(config.GOOGLE_AUTH_DIR, "credentials.json")
+from brevo import Brevo
+from brevo.transactional_emails import (
+    SendTransacEmailRequestSender,
+    SendTransacEmailRequestToItem,
+)
 
-def cred_setup():
-    os.makedirs(config.GOOGLE_AUTH_DIR, exist_ok=True)
+client = Brevo(api_key=config.API_KEY)
 
-    if not os.path.exists(TOKEN_PATH) and os.getenv("GOOGLE_TOKEN_JSON"):
-        with open(TOKEN_PATH, "w") as f:
-            f.write(os.environ["GOOGLE_TOKEN_JSON"])
-
-    if not os.path.exists(CREDENTIALS_PATH) and os.getenv("GOOGLE_CREDENTIALS_JSON"):
-        with open(CREDENTIALS_PATH, "w") as f:
-            f.write(os.environ["GOOGLE_CREDENTIALS_JSON"])
+NRemail = "noreply@arcsharks.com.au"
+NRname = "ARC Sharks"
 
 def hash_code(code: str, salt: str) -> str:
     return hashlib.sha256((code + salt).encode()).hexdigest()
@@ -49,7 +29,7 @@ def store_code(email: list, db: Session):
     salt = secrets.token_hex(16)
 
     code_hash = hash_code(code, salt)
-    expires_at = int(time.time()) + 300  # 5 mins
+    expires_at = int(time.time()) + 600  # 10 mins
 
     # delete existing code for this email
     existing = db.query(VerificationCode).filter_by(email=email).first()
@@ -104,62 +84,70 @@ def verify_code(email, user_input, db: Session):
         print("incorrect")
         return False, "Incorrect code"
 
-def get_service():
-    if Request is None or Credentials is None or InstalledAppFlow is None or build is None:
-        raise RuntimeError("Missing Google API dependencies; install google-auth, google-auth-oauthlib, google-api-python-client")
+def send_email(subject: str, message: str, sName: str, sEmail: str, reciverData: dict):
 
-    creds = None
+    recieverList = []
 
-    # Load saved token
-    if os.path.exists(TOKEN_PATH):
-        creds = Credentials.from_authorized_user_file(TOKEN_PATH, SCOPES)
+    for data in reciverData:
+        name = data["name"] 
+        email = data["email"]
 
-    print(creds)
+       
 
-    # If not valid then back to login :)
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            raise Exception("OAuth reauthentication required")
+        recieverList.append(SendTransacEmailRequestToItem(
+            email=email,
+            name=name
+        ))
 
-        # Save token
-        with open(TOKEN_PATH, "w") as token:
-            token.write(creds.to_json())
+    return client.transactional_emails.send_transac_email(
+        subject=subject,
+        html_content=message,
 
-    return build("gmail", "v1", credentials=creds)
+        sender=SendTransacEmailRequestSender(
+            name=sName,
+            email=sEmail
+        ),
+        
+        to=recieverList
 
-def send_email(emails: list, subject: str, body: str):
-    service = get_service()
+    )
 
-    message = MIMEText(body)
-
-    message["to"] = ", ".join(emails)
-    message["from"] = "me"
-    message["subject"] = subject
-
-    raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
-
-    service.users().messages().send(
-        userId="me",
-        body={"raw": raw}
-    ).execute()
-
-    print("Email sent successfully to ", emails, "!")
 
 def send_verf_email(email: str, name: str, db: Session):
     code = store_code(email, db)
 
-    print("Code to send: ", code, "\n For email: ", email)
-
     subject = "Your verification code"
-    body = f"Hello {name}! \nYour verification code is: {code}\n\nThis code will expire in 5 minutes."
+    body = f"""
+    <html>
+        <body>
+            <p> Hello {name}! </p>
+            <p> Your verification code is: {code} <br> </p>
+            <p> This code will expire in 10 minutes. </p>
+        </body>
+    </html>
+    """
 
-    send_email([email], subject, body)
+    recieverData = [
+        {
+            "name": name,
+            "email": email
+        }
+    ]
 
-    return code
+    send_email(subject, body, NRname, NRemail, recieverData)
 
 if __name__ == "__main__":
-    send_email()
+
+    htmlMessage = """
+    <html>
+        <body>
+            <p> TESTING THE BRAVO API WOOOOOOOHOOOOOOOOOOOOO!!! </p>
+        </body>
+    </html>
+
+    """
+
+    result = send_email("Testing", htmlMessage, "ARCsharks Support", "support@arcsharks.com.au", "Yahya K", "acs26967@amitystudent.com")
+
 
 
