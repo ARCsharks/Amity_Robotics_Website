@@ -2,3 +2,4 @@ backend/robotics.db
 
 .db
 
+*.pyc
