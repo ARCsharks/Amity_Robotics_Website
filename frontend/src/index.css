@@ -262,11 +262,11 @@ button {
 }
 
 .sponsors-grid.tiger {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .sponsors-grid.hammerhead {
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 }
 
 /* CARD */
@@ -487,6 +487,7 @@ button {
 
 .sponsor-card.hammerhead .sponsor-name {
   font-size: clamp(18px, 2vw, 24px);
+  margin-top: 1%;
   line-height: 1.12;
 }
 

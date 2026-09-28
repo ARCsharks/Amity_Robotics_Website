@@ -51,7 +51,7 @@ export default function Robots() {
           <ScrollReveal key={year} className="mt-[64px]">
 
             {/* Year Title */}
-            <h2 className="text-[28px] text-cyan-300 font-bold text-center mb-[32px]">
+            <h2 className="text-[36px] text-cyan-300 font-bold text-center mb-[32px]">
               {year}
             </h2>
 
@@ -60,7 +60,7 @@ export default function Robots() {
               flex flex-wrap 
               justify-center 
               gap-[40px] 
-              mt-[20px] 
+              mt-[35px] 
               max-w-[1000px] 
               mx-auto
             ">
@@ -68,7 +68,7 @@ export default function Robots() {
               {robotsByYear[year].map((robot) => (
                 <motion.div
                   key={robot.id}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.5, marginTop: 70,  marginBottom: 70}}
                   className="
                     robots-grid
                     w-[calc(50%-20px)] 

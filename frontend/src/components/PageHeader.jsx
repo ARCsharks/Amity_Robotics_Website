@@ -13,10 +13,10 @@ export default function PageHeader({ title, image_path, takeFullHeight, classnam
         
       }
     >
-      <h1 className="heading-space text-[#E6FBFF] drop-shadow-[0_0_18px_#00D9FF] font-bold text-[80px] text-center font-orbitron"
+      <h1 className="heading-space text-[#E6FBFF] drop-shadow-[0_0_18px_#00D9FF] font-bold text-[80px] text-center font-orbitron mt-min-20px"
         style={
           image_path
-            ? { paddingBottom: "600px" }
+            ? { marginBottom: "400px" }
             : {}
 
         }

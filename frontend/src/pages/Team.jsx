@@ -51,7 +51,7 @@ export default function Team() {
           <ScrollReveal key={comp} className="mt-[64px]">
 
             {/* COMP Title */}
-            <h2 className="text-[28px] text-cyan-300 font-bold text-center mb-[32px]">
+            <h2 className="text-[36px] text-cyan-300 font-bold text-center mb-[32px]">
               {comp}
             </h2>
 
@@ -68,7 +68,7 @@ export default function Team() {
               {teamsByComp[comp].map((team) => (
                 <motion.div
                   key={team.id}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.5, marginTop: 100, marginBottom: 50 }}
                   className="
                     teams-grid
                     w-[calc(50%-20px)] 
